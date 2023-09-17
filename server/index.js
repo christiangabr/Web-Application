@@ -2,12 +2,12 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
 const EmployeeModel = require('./models/Employee')
-require('dotenv').config()
+
 const app = express()
 app.use(express.json())
 app.use(cors())
 
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect("mongodb+srv://chgab:Lumpia2000@cluster.tq6rtbc.mongodb.net/?retryWrites=true&w=majority")
 
 app.post("/login", (req, res) => {
     const {email, password} = req.body;
@@ -17,7 +17,7 @@ app.post("/login", (req, res) => {
             if (user.password === password) {
                 res.json("Success!")
             } else {
-                res.json("The password is incorrect.")
+                res.json("The pass word is incorrect.")
             }
         } else {
             res.json("That email is not registered.")

@@ -1,26 +1,33 @@
 import { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Signup from './Signup'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Login from './Login'
-import Home from './Home'
-import Profile from './Profile'
-import FuelQuote from './FuelQuote'
-import FuelQuoteHistory from './FuelQuoteHistory'
+import Home from './Pages/Home/Home'
+import Layout from './Layout'
+import Signup from './Pages/Signup'
+import Login from './Pages/Login'
+import Hub from './Pages/Hub'
+import Profile from './Pages/Profile'
+import FuelQuote from './Pages/FuelQuote'
+import FuelQuoteHistory from './Pages/FuelQuoteHistory'
 
 function App() {
 
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/register' element={<Signup />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/home' element={<Home />} />
-      <Route path='/profile' element={<Profile />} />
-      <Route path='/fuelquote' element={<FuelQuote />} />
-      <Route path='/fuelquotehistory' element={<FuelQuoteHistory />} />
-    </Routes>
+      <Routes>
+        {/* Initial Page */}
+        <Route index element={<Home />} />
+        {/* Register/Login */}
+        <Route path='/register' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
+        {/* Login Content */}
+        <Route  element={<Layout/>}>
+          <Route path='/hub' element={<Hub />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/fuelquote' element={<FuelQuote />} />
+          <Route path='/fuelquotehistory' element={<FuelQuoteHistory />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   )
 }

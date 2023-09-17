@@ -1,0 +1,40 @@
+.navbarHome{
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height: 80px;
+  padding: 10px 90px;
+  box-sizing: border-box;
+  background: rgba(0,0,0,0.3);
+  /* display: flex; 
+  justify-content: center;  */
+  color: white;
+}
+
+.navHomeContainer{
+  width: 100%;
+  max-width: 1800px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo{
+  font-weight: 500;
+  font-size: 40px;
+}
+
+.navHomeButton{
+  margin-left: 20px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #003580;
+}
+
+.button-margin {
+  margin-left: 16px;
+  margin-right: 8px;
+}
