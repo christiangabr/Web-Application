@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -11,18 +12,18 @@ function Profile() {
       <div class="row">
         <div class="col">
           <div class="p-3 border bg-light">
-            <h3>Full Name</h3>
-            <input type="text" required maxLength={50}></input>
-            <h3>Address 1</h3>
-            <input type="text" required maxLength={100}></input>
-            <h3>Address 2</h3>
-            <input type="text" optional maxLength={100}></input>
+          <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" maxlength={50} />
+              <label for="address1">Address 1</label>
+              <input type="text" id="address1" maxlength={100} />
+              <label for="address2">Address 2</label>
+              <input type="text" id="address2" maxlength={100} />
           </div>
         </div>
         <div class="col">
           <div class="p-3 border bg-light">
-            <h3>City</h3>
-            <input type="text" required maxLength={100}></input>
+          <label for="city">City</label>
+              <input type="text" id="city" maxlength={100} />
             <h3>State</h3>
             <select>
               <option value="AL">AL</option>
@@ -77,8 +78,8 @@ function Profile() {
               <option value="WI">WI</option>
               <option value="WY">WY</option>
             </select>
-            <h3>Zipcode</h3>
-            <input type="text" required maxLength={9} minLength={5}></input>
+            <label for="zipcode">Zipcode</label>
+              <input type="text" id="zipcode" maxlength={9} minlength={5} pattern="\d*" />
           </div>
         </div>
       </div>
