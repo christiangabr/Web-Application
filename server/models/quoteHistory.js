@@ -1,19 +1,12 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const quoteHistorySchema = new mongoose.Schema ({
-  id: Number,
+const quoteHistorySchema = new mongoose.Schema({
   email: String,
-  qH: [{
-    deliveryDate: String,
-    address1: String,
-    address2: String,
-    city: String,
-    state: String,
-    zipCode: String,
-    gallonsReq: Number,
-    priceperGallon: Number,
-    totalAmount: Number
-  }]
-})
+  gallonsReq: Number,
+  deliveryAddress: String,
+  deliveryDate: String,
+  suggestedPrice: Number,
+  totalAmountDue: Number,
+});
 
 module.exports = mongoose.model("qHS", quoteHistorySchema);
