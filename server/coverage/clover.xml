@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1697232493408" clover="3.2.0">
-  <project timestamp="1697232493409" name="All files">
-    <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="9" coveredelements="9" complexity="0" loc="8" ncloc="8" packages="2" files="2" classes="2"/>
+<coverage generated="1697239537547" clover="3.2.0">
+  <project timestamp="1697239537547" name="All files">
+    <metrics statements="18" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2" elements="20" coveredelements="19" complexity="0" loc="18" ncloc="18" packages="2" files="4" classes="4"/>
     <package name="Controllers">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="quoteHistory.js" path="C:\Users\Erick\Documents\Web Development\COSC-4353-project\test-fuel-app\Web-Application\server\Controllers\quoteHistory.js">
+      <metrics statements="12" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="profile.js" path="C:\Users\kenny\OneDrive\Documents\GitHub\Web-Application\server\Controllers\profile.js">
+        <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+      </file>
+      <file name="quoteHistory.js" path="C:\Users\kenny\OneDrive\Documents\GitHub\Web-Application\server\Controllers\quoteHistory.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -14,8 +24,14 @@
       </file>
     </package>
     <package name="models">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="quoteHistory.js" path="C:\Users\Erick\Documents\Web Development\COSC-4353-project\test-fuel-app\Web-Application\server\models\quoteHistory.js">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Profile.js" path="C:\Users\kenny\OneDrive\Documents\GitHub\Web-Application\server\models\Profile.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+      </file>
+      <file name="quoteHistory.js" path="C:\Users\kenny\OneDrive\Documents\GitHub\Web-Application\server\models\quoteHistory.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>

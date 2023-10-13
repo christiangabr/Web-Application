@@ -1,13 +1,18 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Profile() {
-  const [email, setEmail] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [password, setPassword] = useState("");
-  const [mailingAddress, setMailingAddress] = useState("");
-  const [billingAddress, setBillingAddress] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const [data, setData] = useState([{}]);
+  
+  useEffect(() => {
+    fetch("http://localhost:3001/profile").then(
+      response => response.json()
+    ).then(
+      data => {
+        setData(data) 
+      }
+    )
+  }, [])
 
 
 
@@ -18,18 +23,18 @@ function Profile() {
       <div class="">
         <div class="row p-3 border bg-light">
           <label for="fullName">Full Name</label>
-          <input type="text" id="fullName" maxlength={50} />
+          <input type="text" id="fullName" maxlength={50} value={data.fullName}/>
           <label for="address1">Address 1</label>
-          <input type="text" id="address1" maxlength={100} />
+          <input type="text" id="address1" maxlength={100} value={data.address1}/>
           <label for="address2">Address 2</label>
-          <input type="text" id="address2" maxlength={100} />
+          <input type="text" id="address2" maxlength={100} value={data.address2}/>
         </div>
         <div class="col">
           <div class="p-3 border bg-light">
           <label for="city">City</label>
-              <input type="text" id="city" maxlength={100} />
+              <input type="text" id="city" maxlength={100} value={data.city}/>
             <h3>State</h3>
-            <select>
+            <select value={data.state}>
               <option value=""></option>
               <option value="AL">AL</option>
               <option value="AK">AK</option>
@@ -84,7 +89,7 @@ function Profile() {
               <option value="WY">WY</option>
             </select>
             <label for="zipcode">Zipcode</label>
-              <input type="text" id="zipcode" maxlength={9} minlength={5} pattern="\d*" />
+              <input type="text" id="zipcode" maxlength={9} minlength={5} pattern="\d*" value={data.zipCode}/>
           </div>
         </div>
       </div>
