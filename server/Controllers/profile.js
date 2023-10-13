@@ -3,20 +3,21 @@ const profile = require('../models/Profile');
 
 const checkProfile = async (req,res,next) => {
   try {  
-    const newProfile = new User({
-      email: req.body.email,
-      fullName: req.body.fullName,
-      address1: req.body.address1,
-      address2: req.body.address2,
-      city: req.body.city,
-      state: req.body.state,
-      zipCode: req.body.zipCode 
+    const newProfile = new profile({
+      email: "helloworld@gmail.com",
+      fullName: "King Kenny",
+      address1: "123 Elm Street",
+      address2: "123 Elm Street",
+      city: "Houston",
+      state: "TX",
+      zipCode: "77777" 
     })
-    await newProfile.save();
-    res.status(200).send("Profile has been created.");
+    res.json(newProfile)
   } catch(err) {
     err.log("profile error");
   }
 }
 
-module.exports = checkProfile;
+
+
+module.exports = {checkProfile};

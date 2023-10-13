@@ -4,6 +4,7 @@ const cors = require("cors")
 // const EmployeeModel = require('./models/Employee')
 const dotenv = require('dotenv');
 const userRoute = require("./Routes/employee");
+const profileRoute = require("./Routes/profileRoute");
 const qHRoute = require('./Routes/quoteHistoryRoute');
 
 const app = express();
@@ -27,7 +28,7 @@ const connect = async () => {
 // Routes
 app.use('/users', userRoute);
 app.use('/quoteHistory', qHRoute);
-
+app.use('/profile', profileRoute);
 
 // testing api endpoint
 // app.get("/api", (req,res) => {
@@ -35,10 +36,9 @@ app.use('/quoteHistory', qHRoute);
 // })
 
 
-
 // Check if backend + database is running
-app.listen(Port, () => {
-    console.log("server is running on", Port);
+app.listen(3001, () => {
+    console.log("server is running on", 3001);
     // connect();
 })
 
