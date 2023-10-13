@@ -1,5 +1,5 @@
 const express = require('express');
-const { postFromBackend } = require('../Controllers/employee')
+const { postFromBackend } = require('../Controllers/quoteHistory')
 
 const router = express.Router();
 
