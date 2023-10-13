@@ -1,22 +1,28 @@
 
-import React from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function Profile() {
+  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [password, setPassword] = useState("");
+  const [mailingAddress, setMailingAddress] = useState("");
+  const [billingAddress, setBillingAddress] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("");
+
+
+
   return (
     <div class="container">
       <h2>Profile</h2>
       <br />
-      <div class="row">
-        <div class="col">
-          <div class="p-3 border bg-light">
+      <div class="">
+        <div class="row p-3 border bg-light">
           <label for="fullName">Full Name</label>
-              <input type="text" id="fullName" maxlength={50} />
-              <label for="address1">Address 1</label>
-              <input type="text" id="address1" maxlength={100} />
-              <label for="address2">Address 2</label>
-              <input type="text" id="address2" maxlength={100} />
-          </div>
+          <input type="text" id="fullName" maxlength={50} />
+          <label for="address1">Address 1</label>
+          <input type="text" id="address1" maxlength={100} />
+          <label for="address2">Address 2</label>
+          <input type="text" id="address2" maxlength={100} />
         </div>
         <div class="col">
           <div class="p-3 border bg-light">
