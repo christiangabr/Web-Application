@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function FuelQuoteHistory() {
+  const [backendData, setbackendData] = useState([{}]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/quoteHistory").then(
+      response => response.json()
+    ).then(
+      data => {
+        setbackendData(data) 
+      }
+    )
+  }, [])
+
   return (
     <div class="container">
       <h2>Fuel Quote History</h2>
@@ -17,11 +29,11 @@ function FuelQuoteHistory() {
             </div>
 
             <div class="divTableRow">
-              <div class="divTableCell">Test</div>
-              <div class="divTableCell">&nbsp;</div>
-              <div class="divTableCell">&nbsp;</div>
-              <div class="divTableCell">&nbsp;</div>
-              <div class="divTableCell">&nbsp;</div>
+              <div class="divTableCell">{backendData.gallonsReq}</div>
+              <div class="divTableCell">{backendData.deliveryAddress}</div>
+              <div class="divTableCell">{backendData.deliveryDate}</div>
+              <div class="divTableCell">{backendData.suggestedPrice}</div>
+              <div class="divTableCell">{backendData.totalAmountDue}</div>
             </div>
 
             <div class="divTableRow">
