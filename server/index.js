@@ -1,22 +1,15 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
-const EmployeeModel = require('./models/Employee')
+// const EmployeeModel = require('./models/Employee')
 const dotenv = require('dotenv');
 const userRoute = require("./Routes/employee");
 const profileRoute = require("./Routes/profileRoute");
 const qHRoute = require('./Routes/quoteHistoryRoute');
-require('dotenv').config()
 
 const app = express();
 app.use(express.json());
 app.use(cors());
-
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => {})
-    .catch((error) => {
-        console.log(error)
-    })
 
 dotenv.config();
 
@@ -52,23 +45,23 @@ app.listen(3001, () => {
 
 
 // Original Code does routing + controller
- app.post("/login", (req, res) => {
-     const {email, password} = req.body;
-     EmployeeModel.findOne({email: email})
-     .then(user => {
-         if (user) {
-             if (user.password === password) {
-                 res.json("Success!")
-             } else {
-                 res.json("The password is incorrect.")
-             }
-         } else {
-             res.json("That email is not registered.")
-         }
-     })
- })
- app.post('/register', (req, res) => {
-     EmployeeModel.create(req.body)
-     .then(employees => res.json(employees))
-     .catch(err => res.json(err))
- })
+// app.post("/login", (req, res) => {
+//     const {email, password} = req.body;
+//     EmployeeModel.findOne({email: email})
+//     .then(user => {
+//         if (user) {
+//             if (user.password === password) {
+//                 res.json("Success!")
+//             } else {
+//                 res.json("The password is incorrect.")
+//             }
+//         } else {
+//             res.json("That email is not registered.")
+//         }
+//     })
+// })
+// app.post('/register', (req, res) => {
+//     EmployeeModel.create(req.body)
+//     .then(employees => res.json(employees))
+//     .catch(err => res.json(err))
+// })

@@ -1,10 +1,22 @@
 const mongoose = require("mongoose");
 
 const EmployeeSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  password: String
-})
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+}, {timestamps: true});
 
-const EmployeeModel = mongoose.model("employees", EmployeeSchema);
-module.exports = EmployeeModel;
+
+module.exports  = mongoose.model("employee", EmployeeSchema);
+
