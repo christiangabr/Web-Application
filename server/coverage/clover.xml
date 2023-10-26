@@ -1,20 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <coverage generated="1697239537547" clover="3.2.0">
   <project timestamp="1697239537547" name="All files">
     <metrics statements="18" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2" elements="20" coveredelements="19" complexity="0" loc="18" ncloc="18" packages="2" files="4" classes="4"/>
     <package name="Controllers">
       <metrics statements="12" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="profile.js" path="C:\Users\kenny\OneDrive\Documents\GitHub\Web-Application\server\Controllers\profile.js">
+=======
+<coverage generated="1697242614259" clover="3.2.0">
+  <project timestamp="1697242614260" name="All files">
+    <metrics statements="37" coveredstatements="36" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4" elements="41" coveredelements="40" complexity="0" loc="37" ncloc="37" packages="2" files="8" classes="8"/>
+    <package name="Controllers">
+      <metrics statements="25" coveredstatements="24" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="employee.js" path="C:\Users\Erick\Documents\Web Development\COSC-4353-project\test-fuel-app\Web-Application\server\Controllers\employee.js">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+      <file name="priceModule.js" path="C:\Users\Erick\Documents\Web Development\COSC-4353-project\test-fuel-app\Web-Application\server\Controllers\priceModule.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+      </file>
+      <file name="profile.js" path="C:\Users\Erick\Documents\Web Development\COSC-4353-project\test-fuel-app\Web-Application\server\Controllers\profile.js">
+>>>>>>> fff459d (db patch update)
         <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
+<<<<<<< HEAD
         <line num="15" count="1" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
       </file>
       <file name="quoteHistory.js" path="C:\Users\kenny\OneDrive\Documents\GitHub\Web-Application\server\Controllers\quoteHistory.js">
+=======
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
+      <file name="quoteHistory.js" path="C:\Users\Erick\Documents\Web Development\COSC-4353-project\test-fuel-app\Web-Application\server\Controllers\quoteHistory.js">
+>>>>>>> fff459d (db patch update)
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -24,14 +60,35 @@
       </file>
     </package>
     <package name="models">
+<<<<<<< HEAD
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="Profile.js" path="C:\Users\kenny\OneDrive\Documents\GitHub\Web-Application\server\models\Profile.js">
+=======
+      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Employee.js" path="C:\Users\Erick\Documents\Web Development\COSC-4353-project\test-fuel-app\Web-Application\server\models\Employee.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+      </file>
+      <file name="Profile.js" path="C:\Users\Erick\Documents\Web Development\COSC-4353-project\test-fuel-app\Web-Application\server\models\Profile.js">
+>>>>>>> fff459d (db patch update)
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
       </file>
+<<<<<<< HEAD
       <file name="quoteHistory.js" path="C:\Users\kenny\OneDrive\Documents\GitHub\Web-Application\server\models\quoteHistory.js">
+=======
+      <file name="priceModule.js" path="C:\Users\Erick\Documents\Web Development\COSC-4353-project\test-fuel-app\Web-Application\server\models\priceModule.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+      <file name="quoteHistory.js" path="C:\Users\Erick\Documents\Web Development\COSC-4353-project\test-fuel-app\Web-Application\server\models\quoteHistory.js">
+>>>>>>> fff459d (db patch update)
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>

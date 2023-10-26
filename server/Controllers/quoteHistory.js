@@ -1,4 +1,4 @@
-const qH = require("../models/quoteHistory");
+const qH = require("../models/quoteHistoryModel");
 
 
 const postFromBackend = (req,res) => {

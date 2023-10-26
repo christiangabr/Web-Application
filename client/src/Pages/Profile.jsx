@@ -1,15 +1,27 @@
 
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
 
 function Profile() {
   const [data, setData] = useState([{}]);
   
+=======
+import { useState, useEffect } from "react";
+
+function Profile() {
+  const [backendData, setbackendData] = useState([{}]);
+
+>>>>>>> fff459d (db patch update)
   useEffect(() => {
     fetch("http://localhost:3001/profile").then(
       response => response.json()
     ).then(
       data => {
+<<<<<<< HEAD
         setData(data) 
+=======
+        setbackendData(data) 
+>>>>>>> fff459d (db patch update)
       }
     )
   }, [])
@@ -23,18 +35,32 @@ function Profile() {
       <div class="">
         <div class="row p-3 border bg-light">
           <label for="fullName">Full Name</label>
+<<<<<<< HEAD
           <input type="text" id="fullName" maxlength={50} value={data.fullName}/>
           <label for="address1">Address 1</label>
           <input type="text" id="address1" maxlength={100} value={data.address1}/>
           <label for="address2">Address 2</label>
           <input type="text" id="address2" maxlength={100} value={data.address2}/>
+=======
+          <input type="text" id="fullName" maxlength={50} value={backendData.fullName}/> 
+          <label for="address1">Address 1</label>
+          <input type="text" id="address1" maxlength={100} value={backendData.address1}/>
+          <label for="address2">Address 2</label>
+          <input type="text" id="address2" maxlength={100} value={backendData.address2}/>
+>>>>>>> fff459d (db patch update)
         </div>
         <div class="col">
           <div class="p-3 border bg-light">
           <label for="city">City</label>
+<<<<<<< HEAD
               <input type="text" id="city" maxlength={100} value={data.city}/>
             <h3>State</h3>
             <select value={data.state}>
+=======
+              <input type="text" id="city" maxlength={100} value={backendData.city}/>
+            <h3>State</h3>
+            <select value={backendData.state}>
+>>>>>>> fff459d (db patch update)
               <option value=""></option>
               <option value="AL">AL</option>
               <option value="AK">AK</option>
@@ -89,7 +115,11 @@ function Profile() {
               <option value="WY">WY</option>
             </select>
             <label for="zipcode">Zipcode</label>
+<<<<<<< HEAD
               <input type="text" id="zipcode" maxlength={9} minlength={5} pattern="\d*" value={data.zipCode}/>
+=======
+              <input type="text" id="zipcode" maxlength={9} minlength={5} pattern="\d*" value={backendData.zipCode}/>
+>>>>>>> fff459d (db patch update)
           </div>
         </div>
       </div>
