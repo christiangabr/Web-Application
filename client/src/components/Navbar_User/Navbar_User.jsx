@@ -21,7 +21,21 @@ const Navbar_User = () => {
           <img src="/gasoline.png" alt="" className="gashandle" />
         </Link>
         {user && (
+          
           <div>
+            <Link to="/hub" className="user-link-button">
+              <button className="navButton">Hub</button>
+            </Link>
+            <Link to="/profile" className="user-link-button">
+              <button className="navButton">Profile</button>
+            </Link>
+            <Link to="/fuelquote" className="user-link-button">
+              <button className="navButton">Fuel Quote Form</button>
+            </Link>
+            <Link to="/fuelquotehistory" className="user-link-button">
+              <button className="navButton">Fuel Quote History</button>
+            </Link>
+            
             <span>{user.email}</span>
             <button onClick={handleClick}>Log out</button>
           </div>
