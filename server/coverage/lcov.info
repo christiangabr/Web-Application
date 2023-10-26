@@ -1,4 +1,42 @@
 TN:
+<<<<<<< HEAD
+=======
+SF:Controllers\employee.js
+FN:7,(anonymous_0)
+FNF:1
+FNH:1
+FNDA:1,(anonymous_0)
+DA:1,1
+DA:2,1
+DA:3,1
+DA:5,1
+DA:7,1
+DA:8,1
+DA:14,1
+DA:18,1
+LF:8
+LH:8
+BRF:0
+BRH:0
+end_of_record
+TN:
+SF:Controllers\priceModule.js
+FN:4,(anonymous_0)
+FNF:1
+FNH:1
+FNDA:1,(anonymous_0)
+DA:1,1
+DA:4,1
+DA:5,1
+DA:13,1
+DA:17,1
+LF:5
+LH:5
+BRF:0
+BRH:0
+end_of_record
+TN:
+>>>>>>> fff459d (db patch update)
 SF:Controllers\profile.js
 FN:4,(anonymous_0)
 FNF:1
@@ -8,9 +46,15 @@ DA:1,1
 DA:4,1
 DA:5,1
 DA:6,1
+<<<<<<< HEAD
 DA:15,1
 DA:17,0
 DA:23,1
+=======
+DA:16,1
+DA:18,0
+DA:22,1
+>>>>>>> fff459d (db patch update)
 LF:7
 LH:6
 BRF:0
@@ -33,6 +77,21 @@ BRF:0
 BRH:0
 end_of_record
 TN:
+<<<<<<< HEAD
+=======
+SF:models\Employee.js
+FNF:0
+FNH:0
+DA:1,1
+DA:3,1
+DA:21,1
+LF:3
+LH:3
+BRF:0
+BRH:0
+end_of_record
+TN:
+>>>>>>> fff459d (db patch update)
 SF:models\Profile.js
 FNF:0
 FNH:0
@@ -45,6 +104,21 @@ BRF:0
 BRH:0
 end_of_record
 TN:
+<<<<<<< HEAD
+=======
+SF:models\priceModule.js
+FNF:0
+FNH:0
+DA:1,1
+DA:4,1
+DA:13,1
+LF:3
+LH:3
+BRF:0
+BRH:0
+end_of_record
+TN:
+>>>>>>> fff459d (db patch update)
 SF:models\quoteHistory.js
 FNF:0
 FNH:0

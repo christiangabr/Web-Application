@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from './Pages/Home/Home'
@@ -15,7 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Initial Page */}
+        Initial Page
         <Route index element={<Home />} />
         {/* Register/Login */}
         <Route path='/register' element={<Signup />} />
