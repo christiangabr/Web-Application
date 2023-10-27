@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 import { AuthContextProvider } from './context/AuthContext.jsx'
+import { FuelPricesContextProvider } from './context/FuelPriceContext.jsx'
+import { ProfilesContextProvider } from './context/ProfileContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthContextProvider>
-      <App />
+      <ProfilesContextProvider>
+        <FuelPricesContextProvider>
+          <App />
+        </FuelPricesContextProvider>
+      </ProfilesContextProvider>
     </AuthContextProvider>
   </React.StrictMode>
 )

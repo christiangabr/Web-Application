@@ -1,19 +1,20 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
+import { useNavigate } from "react-router-dom"; 
 
-export const useSignup = () => {
+export const useLogin = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const { dispatch } = useAuthContext()
-
-  const signup = async (name, email, password) => {
+  const navigate = useNavigate();
+  const login = async (email, password) => {
     setIsLoading(true)
     setError(null)
 
-    const res = await fetch('http://localhost:3001/users/signup', {
+    const res = await fetch('http://localhost:3001/users/login', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({name, email, password})
+      body: JSON.stringify({email, password})
     })
 
     const json = await res.json()
@@ -28,8 +29,9 @@ export const useSignup = () => {
 
       dispatch({type: 'LOGIN', payload: json})
       setIsLoading(false)
+      navigate('/fuelquote')
     }
   }
 
-  return { signup, isLoading, error }
+  return { login, isLoading, error }
 }

@@ -28,6 +28,10 @@
 .user-link-button{ 
   margin-left: 35px;
 }
+.user-link-button:hover {
+  color: red
+}
+
 
 .gashandle {
   width: 30px;

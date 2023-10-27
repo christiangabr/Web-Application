@@ -28,7 +28,7 @@ const connect = async () => {
 app.use('/users', userRoute);
 app.use('/quoteHistory', qHRoute);
 app.use('/profile', profileRoute);
-app.use('/price', priceModuleRoute);
+app.use('/prices', priceModuleRoute);
 
 
 

@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 
 
 const profileSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: true,
-    unique: true 
-  },
   fullName: {
     type: String,
     required: true,
@@ -41,10 +36,17 @@ const profileSchema = new mongoose.Schema({
     required: true,
     minLength: 5,
     maxLength: 9
+  },
+  isFirstTime: {
+    type: Boolean,
+    default: true, 
+  },
+  user_id: {
+    type: String,
+    required: true
   }
 })
 
-
-module.exports = mongoose.model("profile", profileSchema)
+module.exports.schema = profileSchema;
 
 
