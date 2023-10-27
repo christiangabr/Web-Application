@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const quoteHistorySchema = new mongoose.Schema({
-  email: String,
   gallonsReq: Number,
   deliveryAddress: String,
   deliveryDate: String,

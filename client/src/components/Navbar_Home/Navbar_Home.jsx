@@ -6,9 +6,7 @@ const Navbar = () => {
   return (
     <div className='navbarHome'>
       <div className='navHomeContainer'>
-        <Link to="/hub" style={{ color: "inherit", textDecoration: "none"}}>
-          <span className="logo">Name Placeholder</span>
-        </Link>
+        <span className="logo">Fuel Calculation</span>
         <div>
           <Link to="/register"><button className="navHomeButton">Sign Up</button></Link>
           <Link to="/login"><button className="navHomeButton">Sign In</button></Link>

@@ -1,56 +1,62 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useAuthContext } from "../hooks/useAuthContext";
 
-function FuelQuoteHistory() {
-  const [backendData, setbackendData] = useState([{}]);
+const FuelQuoteHistory = () => {
+  const { user } = useAuthContext();
+  const [backendData, setbackendData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3001/quoteHistory").then(
-      response => response.json()
-    ).then(
-      data => {
-        setbackendData(data) 
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/prices', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${user.token}`
+          }
+        });
+        const json = await response.json();
+        setbackendData(json); // Update the state with the fetched data
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching data: ', error);
+        setIsLoading(false);
       }
-    )
-  }, [])
+    };
+
+    fetchData();
+  }, [user.token]);
 
   return (
-    <div class="container">
+    <div className="container">
       <h2>Fuel Quote History</h2>
-      <div class="p-3 border bg-light">
-        <div class="divTable">
-          <div class="divTableBody">
-            <div class="divTableRow">
-              <div class="divTableCell">Gallons Requested</div>
-              <div class="divTableCell">Delivery Address</div>
-              <div class="divTableCell">Delivery Date</div>
-              <div class="divTableCell">Suggested Price</div>
-              <div class="divTableCell">Total Amount Due</div>
+      <div className="p-3 border bg-light">
+        <div className="divTable">
+          <div className="divTableBody">
+            <div className="divTableRow">
+              <div className="divTableCell">Gallons Requested</div>
+              <div className="divTableCell">Delivery Address</div>
+              <div className="divTableCell">Delivery Date</div>
+              <div className="divTableCell">Suggested Price</div>
+              <div className="divTableCell">Total Amount Due</div>
             </div>
 
-            <div class="divTableRow">
-              <div class="divTableCell">{backendData.gallonsReq}</div>
-              <div class="divTableCell">{backendData.deliveryAddress}</div>
-              <div class="divTableCell">{backendData.deliveryDate}</div>
-              <div class="divTableCell">{backendData.suggestedPrice}</div>
-              <div class="divTableCell">{backendData.totalAmountDue}</div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">&nbsp;</div>
-              <div class="divTableCell">&nbsp;</div>
-              <div class="divTableCell">&nbsp;</div>
-              <div class="divTableCell">&nbsp;</div>
-              <div class="divTableCell">&nbsp;</div>
-            </div>
-
-            <div class="divTableRow">
-              <div class="divTableCell">&nbsp;</div>
-              <div class="divTableCell">&nbsp;</div>
-              <div class="divTableCell">&nbsp;</div>
-              <div class="divTableCell">&nbsp;</div>
-              <div class="divTableCell">&nbsp;</div>
-            </div>
+            {isLoading ? (
+              <div className="divTableRow">
+                <div className="divTableCell">Loading...</div>
+              </div>
+            ) : (
+              backendData.map((item, index) => (
+                <div className="divTableRow" key={index}>
+                  <div className="divTableCell">{item.gallonsReq}</div>
+                  <div className="divTableCell">{item.deliveryAddress}</div>
+                  <div className="divTableCell">{item.deliveryDate}</div>
+                  <div className="divTableCell">{item.suggestedPrice}</div>
+                  <div className="divTableCell">{item.totalAmountDue}</div>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>

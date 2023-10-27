@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSignup } from "../hook/useSignup";
+import { useSignup } from "../hooks/useSignup";
 
 function Signup() {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signup, error, isLoading } = useSignup();
@@ -12,13 +11,8 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await signup(name, email, password);
-      if (res.ok) {
-        navigate('/');
-      }
-      else {
-        console.error('Signup failed:', res.statusText);
-      }
+      await signup(email, password);
+      
     } catch (error) {
       console.log(error);
     }
@@ -31,21 +25,6 @@ function Signup() {
         </Link>
         <h2>Register</h2>
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="email">
-              <ion-icon name="person-outline"></ion-icon>
-              <strong>Name</strong>
-            </label>
-            <input
-              type="text"
-              placeholder="Enter Name"
-              autoComplete="off"
-              id="name"
-              className="form-control rounded-0"
-              required
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
           <div className="mb-3">
             <label htmlFor="email">
               <ion-icon name="lock-closed-outline"></ion-icon>
