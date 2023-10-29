@@ -29,7 +29,13 @@ app.use('/users', userRoute);
 app.use('/quoteHistory', qHRoute);
 app.use('/profile', profileRoute);
 app.use('/prices', priceModuleRoute);
+app.use('/api/profiles', profileRoute);
 
+// middleware
+app.use((req, res, next) => {
+    console.log(req.path, req.method)
+    next()
+})
 
 
 // Check if backend + database is running
@@ -37,8 +43,3 @@ app.listen(Port, () => {
     console.log("server is running on", Port);
     connect();
 })
-
-
-
-
-

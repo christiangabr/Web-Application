@@ -1,4 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+import ProfileDetails from "../../components/ProfileDetails";
+import ProfileUpdateForm from "../../components/ProfileUpdateForm";
+
+function Profile() {
+  const [backendData, setbackendData] = useState([{}]);
+
+  /*useEffect(() => {
+    fetch("http://localhost:3001/profile")
+      .then((response) => response.json())
+      .then((data) => {
+        setbackendData(data);
+      });
+  }, []);*/
+
+  const [profiles, setProfiles] = useState(null)
+  
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const response = await fetch('http://localhost:3001/api/profiles/')
+      const json = await response.json()
+
+      if (response.ok) {
+        setProfiles(json)
+      }
+    }
+
+    fetchProfile()
+  }, [])
+
+
+  return (
+    <div class = "container">
+      <h2>Profile</h2>
+      <div className="profiles">
+        {profiles && profiles.map((profile) =>(
+          <ProfileDetails key={profile._id} profile={profile} />
+        ))}
+      </div>
+      <ProfileUpdateForm/>
+    </div>
+  )
+  
+}
+export default Profile;
+
+/*import React, { useState, useEffect } from 'react';
 import ProfileForm from './ProfileForm';
 import DisplayProfile from './DisplayProfile';
 import { useAuthContext } from '../../hooks/useAuthContext';
@@ -69,4 +115,4 @@ function RegistrationForm({ setIsNewUser }) {
 
 
 
-export default Profile;
+export default Profile;*/
