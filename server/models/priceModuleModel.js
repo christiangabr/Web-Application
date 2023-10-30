@@ -2,30 +2,9 @@ const mongoose = require('mongoose');
 
 
 const priceSchema = new mongoose.Schema({
-  gallonsReq: {
+  price: {
     type: Number,
-    required: true
-  },
-  deliveryAddress: {
-    type: String,
-    required: true
-  },
-  deliveryDate: {
-   type: String,
-   required: true 
-  },
-  suggestedPrice: {
-    type: Number,
-    required: true
-  },
-  totalAmountDue: {
-    type: Number,
-    required: true
-  },
-  user_id: {
-    type: String,
-    required: true
-  }
-}, { timestamps: true})
+    default: 3.99
+ }, { timestamps: true})
 
 module.exports = mongoose.model("price", priceSchema)
