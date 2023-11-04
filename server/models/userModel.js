@@ -2,52 +2,17 @@ const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
 const validator = require('validator');
 
-const fuelQuoteSchema = new mongoose.Schema({
-  gallonsReq: Number,
-  deliveryAddress: String,
-  deliveryDate: String,
-  suggestedPrice: Number,
-  totalAmountDue: Number
-});
 const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-@@ -17,6 +23,36 @@ const userSchema = new mongoose.Schema({
+  email: {
     type: String,
     required: true,
+    unique: true,
   },
-  address1: {
+  password: {
     type: String,
-    required: false,
-    minLength: 1,
-    maxLength: 100
-  },
-  address2: {
-    type: String,
-    required: false,
-    minLength: 1,
-    maxLength: 100
-  },
-  city: {
-    type: String,
-    required: false,
-    minLength: 1,
-    maxLength: 100
-  },
-  state: {
-    type: String,
-    required: false,
-    match: /^[A-Z]{2}$/
-  },
-  zipCode: {
-    type: String,
-    required: false,
-    minLength: 5,
-    maxLength: 9
-  },
-  fuelQuotes: [fuelQuoteSchema]
+    required: true,
+  }
 }, {timestamps: true});
-
 
 
 // static signup method
