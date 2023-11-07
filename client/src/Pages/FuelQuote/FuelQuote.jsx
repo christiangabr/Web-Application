@@ -20,7 +20,6 @@ const FuelQuote = () => {
   const [error, setError] = useState(null);
   const [backendData, setbackendData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  var test = 0
   
 
 
@@ -60,6 +59,18 @@ const FuelQuote = () => {
       fetchProfile()
     }
   }, [dispatch, user])
+
+   // Suggested Price = Current Price + Margin
+   var currentPrice = 1.5
+   var location = 0
+   // doesn't need [0] in js code but does need it in the html code (after return statement)
+   if (backendData.address1 == 'TX') {
+     location = 0.02 
+   }
+   else {
+    location = 0.04
+   }
+   var margin = currentPrice + location
 
 
   const handleSubmit = async (e) => {
@@ -106,6 +117,7 @@ const FuelQuote = () => {
   return (
     <form className="fQ" onSubmit={handleSubmit}>
       <h2>Fuel Quote</h2>
+      <h2>Test: ${margin}</h2>
       <div class="row">
         <div class="col">
           {/* gallonsReq */}
