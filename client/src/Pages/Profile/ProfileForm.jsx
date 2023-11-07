@@ -52,7 +52,7 @@ const ProfileForm = ({checkNewUserStatus}) => {
     }
     if (response.ok) {
       setError(null);
-      // dispatch({ type: "CREATE_PROFILE", payload: json });
+      dispatch({ type: "CREATE_PROFILE", payload: json });
       navigate("/displayProfile")
     }
   };
