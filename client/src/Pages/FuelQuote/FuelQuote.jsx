@@ -2,21 +2,27 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import format from "date-fns/format";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFuelPricesContext } from "../../hooks/useFuelPricesContext";
+import { useProfilesContext } from "../../hooks/useProfileContext";
 import "./FuelQuote.css";
 
 const FuelQuote = () => {
   const { dispatch } = useFuelPricesContext();
+  const { dispatch2 } = useProfilesContext();
   const { user } = useAuthContext();
-
   const [gallonsReq, setGallonsReq] = useState("");
   const [deliveryAddress, setDeliveryAddress] = useState("");
   const [deliveryDate, setDeliveryDate] = useState(null);
   const [suggestedPrice, setSuggestedPrice] = useState("");
   const [totalAmountDue, setTotalAmountDue] = useState("");
   const [error, setError] = useState(null);
+  const [backendData, setbackendData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  var test = 0
+  
+
 
   const handleDateChange = (selectedDate) => {
     const formattedDate = format(selectedDate, "MM/dd/yyyy");
@@ -34,6 +40,27 @@ const FuelQuote = () => {
       setTotalAmountDue(""); 
     }
   };
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const response = await fetch('http://localhost:3001/profile', {
+        headers: {'Authorization': `Bearer ${user.token}`},
+      })
+      const json = await response.json()
+      console.log(json)
+      setbackendData(json)
+      setIsLoading(false);
+
+      if (response.ok) {
+        dispatch({type: 'SET_PROFILES', payload: json})
+      }
+    }
+
+    if (user) {
+      fetchProfile()
+    }
+  }, [dispatch, user])
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,6 +86,7 @@ const FuelQuote = () => {
         Authorization: `Bearer ${user.token}`,
       },
     });
+    console.log(price)
     const json = await response.json();
 
     if (!response.ok) {
@@ -91,13 +119,12 @@ const FuelQuote = () => {
           />
 
           {/* deliveryAddress */}
-          <h6>Delivery Address</h6>
-          <input
-            type="text"
-            id="deliveryAddress"
-            required
-            onChange={(e) => setDeliveryAddress(e.target.value)}
-          />
+          {backendData.length > 0 ? (
+          <h6>Delivery Address: {backendData[0].address1}</h6>
+          ) : (
+          <p></p>
+          )}
+          {/* <h6>address1: {backendData[0].address1}</h6> */}
 
           {/* deliveryDate */}
           <h6>Delivery Date</h6>
@@ -114,7 +141,7 @@ const FuelQuote = () => {
           <h6>Suggested Price</h6>
           <input
             type="text"
-            id="gallonsReq"
+            id="suggestedPrice"
             required
             onChange={(e) => setSuggestedPrice(e.target.value)}
             onBlur={handleCalculation}
