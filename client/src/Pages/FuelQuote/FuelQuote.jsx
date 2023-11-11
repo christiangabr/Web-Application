@@ -115,13 +115,14 @@ const FuelQuote = () => {
   };
 
   return (
+    <div className="fQTitle">
+      <h2>Fuel Quote Form</h2>
     <form className="fQ" onSubmit={handleSubmit}>
-      <h2>Fuel Quote</h2>
       <h2>Test: ${margin}</h2>
       <div class="row">
         <div class="col">
           {/* gallonsReq */}
-          <h6>Gallons Requested</h6>
+          <h6><strong>Gallons Requested</strong></h6>
           <input
             type="text"
             id="gallonsReq"
@@ -132,14 +133,14 @@ const FuelQuote = () => {
 
           {/* deliveryAddress */}
           {backendData.length > 0 ? (
-          <h6>Delivery Address: {backendData[0].address1}</h6>
+          <h6><strong>Delivery Address:</strong> {backendData[0].address1}</h6>
           ) : (
           <p></p>
           )}
           {/* <h6>address1: {backendData[0].address1}</h6> */}
 
           {/* deliveryDate */}
-          <h6>Delivery Date</h6>
+          <h6><strong>Delivery Date</strong></h6>
           <DatePicker
             id="deliveryDate"
             placeholderText="Enter A Date"
@@ -150,7 +151,7 @@ const FuelQuote = () => {
         </div>
         <div class="col">
           {/* suggestedPrice */}
-          <h6>Suggested Price</h6>
+          <h6> <strong>Suggested Price</strong></h6>
           <input
             type="text"
             id="suggestedPrice"
@@ -160,7 +161,7 @@ const FuelQuote = () => {
           />
 
           {/* totalAmountDue */}
-          <h6>Total Amount Due</h6>
+          <h6><strong>Total Amount Due</strong></h6>
           <input
             type="text"
             id="totalAmountDue"
@@ -175,6 +176,7 @@ const FuelQuote = () => {
         </button>
       </div>
     </form>
+    </div>
   );
 };
 
