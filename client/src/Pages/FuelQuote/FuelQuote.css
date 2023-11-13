@@ -4,9 +4,11 @@
   padding: 20px;
   background: #f6f4f4;
   border-radius: 4px;
+  
 }
 
 .fQButton{
   display: flex;
   justify-content: center; /* Center horizontally */
+  gap: 30px;
 }
