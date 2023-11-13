@@ -20,85 +20,58 @@ const FuelQuote = () => {
   const [error, setError] = useState(null);
   const [backendData, setbackendData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  
+
 
   const handleDateChange = (selectedDate) => {
     const formattedDate = format(selectedDate, "MM/dd/yyyy");
     setDeliveryDate(formattedDate);
   };
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      const response = await fetch("http://localhost:3001/profile", {
-        headers: { Authorization: `Bearer ${user.token}` },
-      });
-      const json = await response.json();
-      console.log(json);
-      setbackendData(json);
-      setIsLoading(false);
-
-      if (response.ok) {
-        dispatch({ type: "SET_PROFILES", payload: json });
-      }
-    };
-
-    if (user) {
-      fetchProfile();
-    }
-  }, [dispatch, user]);
-
   const handleCalculation = () => {
     const gallons = parseFloat(gallonsReq);
+    const price = parseFloat(suggestedPrice);
 
-    // Suggested Price = Current Price + Margin
-    var currentPrice = 1.5;
-    var location = 0;
-    const cpf = 0.1;
-    var grf = 0;
-    var rhf = 0;
-
-    if (backendData.length > 0) {
-      rhf = 0.01;
-      if (backendData[0].state === "TX") {
-        location = 0.02;
-      } else {
-        location = 0.04;
-      }
-    } else {
-      if (backendData[0].state === "TX") {
-        location = 0.02;
-      } else {
-        location = 0.04;
-      }
-    }
-
-    if (gallons >= 1000) {
-      grf = 0.02;
-    } else {
-      grf = 0.03;
-    }
-    var margin = currentPrice * (location - rhf + grf + cpf);
-    //  console.log(`location: ${location}`)
-    //  console.log(`grf: ${grf}`)
-    //  console.log(`cpf: ${cpf}`)
-    //  console.log(`margin: ${margin}`)
-    const sP = currentPrice + margin;
-    setSuggestedPrice(sP);
-    console.log(`sP: ${sP}`);
-
-    if (!isNaN(gallons)) {
-      const calculatedTotal = gallons * sP;
+    if (!isNaN(gallons) && !isNaN(price)) {
+      const calculatedTotal = gallons * price;
       setTotalAmountDue(calculatedTotal);
     } else {
-      setTotalAmountDue("");
+      setTotalAmountDue(""); 
     }
   };
 
   useEffect(() => {
-    // Check if relevant state values have changed
-    if (gallonsReq !== "" && suggestedPrice !== "" && totalAmountDue !== "") {
-      handleSubmit({ preventDefault: () => {} });
+    const fetchProfile = async () => {
+      const response = await fetch('http://localhost:3001/profile', {
+        headers: {'Authorization': `Bearer ${user.token}`},
+      })
+      const json = await response.json()
+      console.log(json)
+      setbackendData(json)
+      setIsLoading(false);
+
+      if (response.ok) {
+        dispatch({type: 'SET_PROFILES', payload: json})
+      }
     }
-  }, []);
+
+    if (user) {
+      fetchProfile()
+    }
+  }, [dispatch, user])
+
+   // Suggested Price = Current Price + Margin
+   var currentPrice = 1.5
+   var location = 0
+   // doesn't need [0] in js code but does need it in the html code (after return statement)
+   if (backendData.address1 == 'TX') {
+     location = 0.02 
+   }
+   else {
+    location = 0.04
+   }
+   var margin = currentPrice + location
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -107,8 +80,6 @@ const FuelQuote = () => {
       setError("You must be logged in");
       return;
     }
-    handleCalculation();
-    setDeliveryAddress(backendData[0].address1);
 
     const price = {
       gallonsReq,
@@ -117,7 +88,6 @@ const FuelQuote = () => {
       suggestedPrice,
       totalAmountDue,
     };
-    console.log(price);
 
     const response = await fetch("http://localhost:3001/prices", {
       method: "POST",
@@ -127,47 +97,50 @@ const FuelQuote = () => {
         Authorization: `Bearer ${user.token}`,
       },
     });
-    console.log(price);
+    console.log(price)
     const json = await response.json();
 
     if (!response.ok) {
       setError(json.error);
     }
     if (response.ok) {
-      setgallonsReq("");
+      setgallonsReq(""); 
       setdeliveryAddress(null);
       setdeliveryDate("");
       setsuggestedPrice("");
-      settotalAmountDue("");
+      settotalAmountDue(""); 
       setError(null);
       dispatch({ type: "CREATE_FUELPRICE", payload: json });
     }
   };
 
   return (
+    <div className="fQTitle">
+      <h2>Fuel Quote Form</h2>
     <form className="fQ" onSubmit={handleSubmit}>
-      <h2>Fuel Quote</h2>
+      <h2>Test: ${margin}</h2>
       <div class="row">
         <div class="col">
           {/* gallonsReq */}
-          <h6>Gallons Requested</h6>
+          <h6><strong>Gallons Requested</strong></h6>
           <input
             type="text"
             id="gallonsReq"
             required
             onChange={(e) => setGallonsReq(e.target.value)}
-            // onBlur={handleCalculation}
+            onBlur={handleCalculation}
           />
 
           {/* deliveryAddress */}
           {backendData.length > 0 ? (
-            <h6>Delivery Address: {backendData[0].address1}</h6>
+          <h6><strong>Delivery Address:</strong> {backendData[0].address1}</h6>
           ) : (
-            <p></p>
+          <p></p>
           )}
+          {/* <h6>address1: {backendData[0].address1}</h6> */}
 
           {/* deliveryDate */}
-          <h6>Delivery Date</h6>
+          <h6><strong>Delivery Date</strong></h6>
           <DatePicker
             id="deliveryDate"
             placeholderText="Enter A Date"
@@ -178,11 +151,17 @@ const FuelQuote = () => {
         </div>
         <div class="col">
           {/* suggestedPrice */}
-          <h6>Suggested Price</h6>
-          <h6>{suggestedPrice}</h6>
+          <h6> <strong>Suggested Price</strong></h6>
+          <input
+            type="text"
+            id="suggestedPrice"
+            required
+            onChange={(e) => setSuggestedPrice(e.target.value)}
+            onBlur={handleCalculation}
+          />
 
           {/* totalAmountDue */}
-          <h6>Total Amount Due</h6>
+          <h6><strong>Total Amount Due</strong></h6>
           <input
             type="text"
             id="totalAmountDue"
@@ -191,22 +170,13 @@ const FuelQuote = () => {
           />
         </div>
       </div>
-      <div>
-        {gallonsReq != '' && deliveryDate ? (
-          <div className="fQButton">
-          <button onClick={handleCalculation} class="btn btn-primary">
-            Get Quote
-          </button>
-          <button type="submit" class="btn btn-primary">
-            Submit Quote
-          </button>
-          </div>
-        ) : (
-          <h1></h1>
-        )}
-       
+      <div className="fQButton">
+        <button type="submit" class="btn btn-primary">
+          Calculate
+        </button>
       </div>
     </form>
+    </div>
   );
 };
 
